@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(function(){
+            $('p').on( // 이벤트를 추가하기
+                        // 함수의 파라미터로 json객체를 사용
+                {
+                    mouseleave:function(){$(this).css('background-color',"red")},
+                    click:function(){$(this).css('background-color',"yellow")},
+                    mouseenter:function(){$(this).css('background-color',"blue")},
+                }
+            );
+            $('button').click(function(){
+                $('p').off('click');//위에서 걸어줬던 click이벤트만 제거
+            })
+        });
+
+    </script>
+
+</head>
+<body>
+    <p>on 함수를 사용하여 다중이벤트 철</p>
+    <hr>
+    <button>이벤트 제거</button>
+</body>
+</html>

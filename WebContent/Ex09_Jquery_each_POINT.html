@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        /*
+            javascript
+            1. for(let index in Array)
+            2. Object(Json) : for(let key in jsonobj){jsonobj[key]}
+            3. array.foreach(function(currentvalue, index, array){};)
+    
+            jquery : each() 반복구문
+            1. $(selector).each(function(){this의 활용}); 배열의 개수만큼 func호출
+            2. $(selector).each(function(index){this의 활용}); 
+            3. $(selector).each(function(index,element){ element }); 
+    
+            jquery : $.each() //배열과 Object가 주어졌을때 사용
+            1. $.each(Array or Object, Function(){this 활용})
+            2. $.each(Array or Object, Function(index){this 활용})
+            3. $.each(Array or Object, Function(index, element){ element })
+    
+            parameter json객체 라면
+                let obj = {name:"홍길동" , age:100};
+                $(obj).each(function(key, value){ value });
+                $.each(obj , function(key, value){ value });
+        */
+
+        $(document).ready(function () {
+            // $('p').each((e) => {
+            //     console.log("this : " + $(e.currentTarget).text())
+            // });
+            $('p').each(function (index) {
+
+                // $(this).attr("id", "param-" + index);
+                $(this).attr({
+                    "id": "param-" + index,
+                    "style": "color:red"
+                });
+            });
+
+            // $('p').each(function(index,element){
+            //     console.log("index : " + index);
+            //     console.log(element);
+            //     console.log("element : " + $(element).text());
+            // })
+            $('p').each((index, element) => {
+                console.log("index : " + index);
+                console.log(element);
+                console.log("element : " + $(element).text());
+            });
+
+            $('#btn').click(() => {
+                alert($('#param-1').text());
+            });
+
+            let array = [
+                { "name": "naver", "link": "www.naver.com" },
+                { "name": "daum", "link": "www.daum.net" },
+                { "name": "bit", "link": "www.bit.or.kr" },
+            ];
+
+            $.each(array, (index, obj) => {
+                // console.log("name : " + obj.name + "   link : "+ obj.link)
+                console.log(obj.name + " / " + obj["link"])
+            })
+
+            //body 태그안에 요소를 얻어서 쓸때
+            //$(array).each(function(){});
+
+            let boardobj = {
+                values: [
+                    { no: 1, title: "heelo world" },
+                    { no: 2, title: "korea" },
+                    { no: 3, title: "bit world" }
+                ],
+                search: "검색"
+            };
+
+            //1. each() 사용하여 no값, title 값 출력
+            $.each(boardobj.values, (index, obj) => {
+                console.log(index + " / " + obj.no + " , " + obj.title);
+            })
+            $.each(boardobj, (key, value) => {
+                if (typeof(value) === "object") {
+                    console.log("this is obj")
+                    $.each(value, (key2, value2) => {
+                        console.log(value2.title)
+                    })
+                }
+
+                // $.each(boardobj,(key, value)=>{
+                //     console.log(typeof(value));    
+
+                // })
+
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <p>java</p>
+    <p>jsp</p>
+    <p>oracle</p>
+    <button id="btn">click</button>
+</body>
+
+</html>

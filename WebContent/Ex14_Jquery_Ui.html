@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+    #draggable{width:150px; height: 150px; padding: 1;}
+</style>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $('#draggable').draggable();
+        })
+    </script>
+</head>
+<body>
+    <div id="draggable">
+        <p>나를 움직여자</p>
+    </div>
+</body>
+</html>

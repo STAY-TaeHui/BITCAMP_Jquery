@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // window.onload = function(){
+        //     document.getElementById("btn").onclick=function(){
+        //         alert("DOM Script")
+        //     }
+        // }
+        $(document).ready(function(){
+            // function VS Arrow Function
+            $('#btn').click(()=>{
+                // alert("DOM Jquery Ready");
+                $(this).hide();         //여기서 버튼이 사라지지 않음
+                console.log($(this))    // 그 이유는 Arrow Function에서 this는 상위의 this를 가리키기 때문에
+                                        //this가 btn을 가리키는것이 아니라 document를 가리킨다.
+                                        //this == document
+            });
+            $('#btn2').click(function(){
+				//alert("DOM Jquery");
+				// $(this).hide(); //button 감추어라
+                console.log($(this))    //this == btn2
+
+			});
+        });
+    </script>
+</head>
+
+<body>
+    
+    <input type="button" id="btn" value="버튼">
+    <input type="button" id="btn2" value="버튼">
+
+</body>
+
+</html>
